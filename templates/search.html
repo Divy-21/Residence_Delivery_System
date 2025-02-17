@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resident Search</title>
+    <link href="static/search.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="search-container">
+        <h2>Search for residents</h2>
+        <form id="searchForm" method="post">
+            <input type="text" id="searchTerm" name="searchTerm" placeholder="eg: DaBigMonke" required>
+            <button type="submit">Search</button>
+        </form>
+        <div class="row text-center" style="padding: 20px;margin: 20px;">
+
+            <div class="col"
+                style="border-radius: 8px;padding: 0px;background-color:rgb(211,211,211,0.5);margin:-20px 10px 10px 10px;min-height: 435px;">
+                <h2 style="border-radius: 8px 8px 0px 0px;background-color: #275d38;color: white;padding: 10px;">Search Records</h2>
+                <div class="table1" style="overflow-y:scroll;"></div>
+                    <table style="background-color: white;margin-bottom: 25px;margin-top: 25px;overflow: hidden;border-radius: 8px;">
+                        <tr>
+                            <td><b>First Name</b></td>
+                            <td><b>Last Name</b></td>
+                            <td><b>CCID</b></td>
+                            <td><b>Residence</b></td>
+                            <td><b>Room No.</b></td>
+                            <td></td>
+                        </tr>
+                        {% if l %}
+    
+                        {% for i in range(l) %}
+                        <tr>
+                            <td>{{ fname[i] }}</td>
+                            <td>{{ lname[i] }}</td>
+                            <td>{{ ccid[i] }}</td>
+                            <td>{{ res[i] }}</td>
+                            <td>{{ room[i] }}</td>
+                            <td><a href="/admin?rolls={{lname[i]}}_{{fname[i]}}_{{ccid[i]}}"><button type='submit'
+                                class='btn btn-danger'>GET QR</button></a></td>              
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="search_bar.js">
+</script>
+
+</body>
+</html>
